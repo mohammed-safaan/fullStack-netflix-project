@@ -1,0 +1,53 @@
+@use "../../scss/" as *;
+
+.footer {
+    position: relative;
+    padding: 6rem 2rem;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top:70px;
+
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+    a:hover{
+        color:red
+    }
+
+    &__content {
+        max-width: 1000px;
+
+        &__logo {
+            @include flex(center, center);
+            margin-bottom: 3rem;
+            .netflix-logo{
+                font-size: 50px;
+            }
+        }
+
+        &__menus {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 0 5rem;
+
+            @include mobile {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        &__menu {
+            @include flex(flex-start, center);
+            flex-direction: column;
+            margin-top: 1rem;
+
+            font-size: 1.5rem;
+            font-weight: 600;
+
+            & > * ~ * {
+                margin-top: 1rem;
+            }
+        }
+    }
+}

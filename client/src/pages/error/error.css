@@ -1,0 +1,68 @@
+.error {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(1, 0, 0, 0) 0%, rgb(0, 0, 0) 100%),
+    url(https://assets.nflxext.com/ffe/siteui/vlv3/c8c8a0ad-86d6-45f1-b21d-821afa4e5027/5465b2b8-e9b3-411d-80f9-d5839f259e05/EG-en-20220801-popsignuptwoweeks-perspective_alpha_website_medium.jpg);
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+}
+.nav {
+  background-color: black;
+  justify-content: center;
+}
+.nav img {
+  width: 100px;
+  margin: 20px;
+}
+.error-body h1 {
+  text-align: center;
+  color: white;
+  font-size: 70px;
+}
+.error-body h3 {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+.error-body p {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin: 80px auto -80px;
+}
+
+.end {
+  text-align: center;
+}
+.end button {
+  width: 20%;
+  height: 50px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+/* .footer {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+} */
+@media only screen and (max-width: 1000px) {
+  .error-body p {
+    font-size: 20px;
+  }
+  .error-body h1 {
+    font-size: 50px;
+  }
+  .error-body h3 {
+    font-size: 40px;
+  }
+  .end button {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,114 @@
+// header
+
+.up {
+  width: 100%;
+  border-bottom: 10px solid #222222;
+
+  height: 115vh;
+  background: linear-gradient(
+      to bottom,
+      rgba(1, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url('https://assets.nflxext.com/ffe/siteui/vlv3/c8c8a0ad-86d6-45f1-b21d-821afa4e5027/5465b2b8-e9b3-411d-80f9-d5839f259e05/EG-en-20220801-popsignuptwoweeks-perspective_alpha_website_medium.jpg');
+  background-position: center;
+  background-size: cover;
+
+  .top {
+    .wrapper {
+      padding: 20px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logo {
+        height: 40px;
+      }
+      .loginButton {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 15px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding-bottom: 50px;
+    @media (max-width: 500px) {
+      h1 {
+        
+      }
+      input {
+        width: 50%;
+      }
+    }
+    h1 {
+      font-size: 50px;
+    }
+    h2 {
+      margin: 25px;
+    }
+    p {
+      font-size: 20px;
+    }
+    .input {
+      width: 50%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      height: 50px;
+      border-radius: 5px;
+
+      input {
+        flex: 9;
+        height: 100%;
+        border: none;
+        padding: 0 10px;
+      }
+      .registerButton {
+        flex: 3;
+        height: 100%;
+        background-color: red;
+        color: white;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        padding-top: 8px;
+      }
+      @media (max-width: 1000px) {
+        font-size: smaller;
+      }
+    }
+    .validation {
+      color: red;
+      width: 50%;
+      text-align: start !important;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+//  handling video
+.pane {
+  position: relative;
+  .ourVideo {
+    width: 60%;
+    position: absolute;
+    top: 90px;
+    right: 110px;
+  }
+}

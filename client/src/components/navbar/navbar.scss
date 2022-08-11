@@ -1,0 +1,129 @@
+@use "../../scss/" as *;
+.navbr {
+  font-size: 13px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 999;
+  background-color: black;
+  opacity: 0.9;
+  .contaner {
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    @include tablet {
+      padding: 0 20px;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      img {
+        height: 50px;
+        margin-right: 40px;
+
+        @include tablet {
+          height: 30px;
+          width: 60px;
+        }
+      }
+      span {
+        margin-right: 20px;
+        cursor: pointer;
+      }
+    }
+    .center {
+      @include tablet {
+        top: -310px;
+        position: absolute;
+        left: 0;
+        border-top: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        background-color: black !important;
+        padding: 50px;
+        width: 100%;
+        transition: all 0.6s ease-in-out;
+        &.activ {
+          top: 70px;
+          height: 100vh;
+        }
+      }
+      a {
+        margin-right: 30px;
+        font-size: 15px;
+
+        @include tablet {
+          margin-top: 20px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid red;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+      a:hover {
+        color: red;
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+
+      .dropdown-nav {
+        img {
+          border-radius: 60%;
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+
+        .btn {
+          background-color: black;
+          border-color: black !important;
+          box-shadow: none;
+        }
+      }
+      @include tablet {
+        // display: none
+      }
+      img {
+        height: 30px;
+        border-radius: 5px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      .icon {
+        margin: 0px 15px;
+        cursor: pointer;
+      }
+      .profile {
+        position: relative;
+        .options {
+          display: none;
+          background-color: var(--main-color);
+          padding: 20px;
+          border-radius: 5px;
+          span {
+            padding: 10px;
+            cursor: pointer;
+          }
+        }
+        &:hover {
+          .options {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 10px;
+          }
+        }
+      }
+    }
+    .nav-icon {
+      cursor: pointer;
+    }
+  }
+}

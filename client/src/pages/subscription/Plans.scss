@@ -1,0 +1,35 @@
+.plans-container {
+  height: 100vh;
+  .label {
+    cursor: pointer;
+    transition: all .2s ease;
+    &:hover {
+      box-shadow: 0 0 15px rgb(229 4 25 / 30%);
+    }
+  }
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    padding : 10px;
+    &:checked {
+      background-color: #010101;
+      border-color: #010101;
+    }
+  }
+  .updateBtn {
+    background-color: #e50419;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+      background-color: rgb(229 4 25 / 80%);
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 6px rgb(229 4 25 / 50%) !important;
+    }
+  }
+  .btn {
+    border-radius: 0;
+  }
+}

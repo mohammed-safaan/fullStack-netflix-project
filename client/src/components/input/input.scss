@@ -1,0 +1,11 @@
+@use "../../scss/variables" as *;
+
+input {
+    border: 1px solid white;
+    width: 80%;
+    background-color: rgb(231, 219, 219);
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    color: black;
+    font-family: $font-family;
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "Enjoy on your TV.",
+    "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
+    "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png",
+    "video": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v",
+    "alt": "Tiger King on Netflix",
+    "direction": "row"
+  },
+  {
+    "id": 2,
+    "title": "Download your programmes to watch on the go.",
+    "subTitle": "Save your data and watch all your favourites offline.",
+    "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg",
+    "alt": "Watch on mobile",
+    "direction": "row-reverse"
+  },
+  {
+    "id": 3,
+    "title": "Watch everywhere.",
+    "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+    "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png",
+    "video": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v",
+    "alt": "Money Heist on Netflix",
+    "direction": "row"
+  },
+  {
+    "id": 3,
+    "title": "Create profiles for kids.",
+    "subTitle": "Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
+    "image": "https://occ-0-2430-3934.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABfpnX3dbgjZ-Je8Ax3xn0kXehZm_5L6-xe6YSTq_ucht9TI5jwDMqusWZKNYT8DfGudD0_wWVVTFLiN2_kaQJumz2iivUWbIbAtF.png?r=11f",
+    "alt": "Money Heist on Netflix",
+    "direction": "row-reverse"
+  }
+]
