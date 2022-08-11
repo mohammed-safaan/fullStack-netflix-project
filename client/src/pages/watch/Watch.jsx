@@ -15,21 +15,34 @@ import "swiper/css/scrollbar";
 import MovieCard from "../../components/movie-card/MovieCard";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/containers/Footer";
+import Comments from "../../components/comments/Comments";
 
 const Watch = () => {
   const location = useLocation();
   const movie = location.state.movie;
   const iframeRef = useRef(null);
 
-  const [type, setType] = useState("");
+  const type = movie.isSeries ? "series" : "movies";
   const [similarmovies, setSimilarMovies] = useState([]);
   let slicesimilarmovies = similarmovies.slice(0, 10);
 
-  const checktype = () => {
-    if (movie.isSeries === false) {
-      setType("movies");
-    } else {
-      setType("series");
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  // get similar movie
+  const getMovieOrSeries = async () => {
+    const url = `http://localhost:8800/api/movies/filter${
+      type ? `?type=${type}` : ""
+    }${movie.genre ? `&genre=${movie.genre}` : ""}`;
+    console.log(url);
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          token: "Bearers " + token,
+        },
+      });
+      setSimilarMovies(res.data.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -39,25 +52,9 @@ const Watch = () => {
   }, []);
 
   useEffect(() => {
-    const getMovieOrSeries = async () => {
-      const url = `http://localhost:8800/api/movies/filter${
-        type ? `?type=${type}` : ""
-      }${movie.genre ? `&genre=${movie.genre}` : ""}`;
-      try {
-        const res = await axios.get(url, {
-          headers: {
-            token:
-              "Bearers eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWU4NGQ5MTQ3MDkwNTdhYzZmZjU0NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTk3OTg4ODMsImV4cCI6MTY2NDExODg4M30.MtFf9CekArm08BKokr2InDdYfVwOllsemxC28sIlisE",
-          },
-        });
-        setSimilarMovies(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    checktype();
     getMovieOrSeries();
-  }, [type, movie.genre]);
+    return () => {};
+  }, [type, movie.genre, movie]);
 
   return (
     <div className="watch">
@@ -83,6 +80,9 @@ const Watch = () => {
               </div>
               <p className="overview">{movie.desc}</p>
               <p className="overview">{movie.year}</p>
+              <div className="movie-content__comments mb-0">
+                <Comments movieId={movie._id} />
+              </div>
             </div>
           </div>
 
@@ -109,17 +109,12 @@ const Watch = () => {
                 <h2 className="text-center m-5">Similar Movies</h2>
               </div>
               <div className="movieswiper text-center ">
-                <Swiper
-                  spaceBetween={50}
-                  slidesPerView={"auto"}
-                  onSlideChange={() => console.log("slide change")}
-                  onSwiper={(swiper) => console.log(swiper)}
-                >
+                <Swiper spaceBetween={50} slidesPerView={"auto"}>
                   {slicesimilarmovies.length > 0 ? (
                     slicesimilarmovies.map((movie, indx) => {
                       return (
-                        <SwiperSlide>
-                          <MovieCard key={indx} item={movie} />
+                        <SwiperSlide key={indx}>
+                          <MovieCard item={movie} />
                         </SwiperSlide>
                       );
                     })

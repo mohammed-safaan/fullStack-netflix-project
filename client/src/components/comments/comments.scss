@@ -1,0 +1,26 @@
+.comments-cont {
+  display: flex;
+  flex-direction: column;
+  .add-sec {
+    display: flex;
+    justify-content: space-between;
+  }
+  .display-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    .comment-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      .comment-img {
+        width: 50px;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

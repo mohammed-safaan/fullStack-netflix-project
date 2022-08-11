@@ -16,7 +16,7 @@ export default function UsersCards() {
   const UsersData = useSelector((state) => state.allUsers.value);
   const status = useSelector((state) => state.allUsers.status);
   const deleteMsg = useSelector((state) => state.allUsers.deleteMsg);
-  // console.log(deleteMsg);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllUsers());
@@ -86,29 +86,6 @@ export default function UsersCards() {
             </Card>
           </Col>
         ))}
-      {/* <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>isAdmin</th>
-            <th>Joined</th>
-          </tr>
-        </thead>
-        <tbody>
-          {arr &&
-            arr.map((ele, index) => {
-              return (
-                <tr>
-                  <td>{index++}</td>
-                  <td>Jhon Deo</td>
-                  <td>false</td>
-                  <td>5/7/2022</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </Table> */}
     </>
   );
 }

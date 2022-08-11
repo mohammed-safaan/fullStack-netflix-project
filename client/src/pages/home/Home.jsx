@@ -7,7 +7,7 @@ import Footer from "../../components/containers/Footer";
 import axios from "axios";
 import SpinnerRoundOutlined from "react-spinners/ClipLoader";
 
-const Home = ({ type, setToken }) => {
+const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [loading, setloading] = useState(false);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -37,7 +37,7 @@ const Home = ({ type, setToken }) => {
 
   return (
     <div className="home">
-      <Navbar setToken={setToken} />
+      <Navbar />
       {loading ? (
         <HeroSlide />
       ) : (
