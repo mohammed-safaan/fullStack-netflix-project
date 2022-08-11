@@ -15,7 +15,8 @@ const Plans = () => {
         >
           {/* Add a hidden field with the lookup_key of your Price */}
           <Row>
-            <Col sm={6}>
+            <>
+            {/* <Col sm={6}>
               <Card className="plan-card position-relative" border="danger">
                 <label htmlFor="Basic plan" className="label">
                   <Card.Title className="p-3 my-2">Basic plan 5$/mo</Card.Title>
@@ -67,12 +68,19 @@ const Plans = () => {
                   className="position-absolute top-0 end-0 m-2"
                 />
               </Card>
-            </Col>
+            </Col> */}
+            </>
             <input
               type="hidden"
               id="userId"
               name="userId"
               value={id}
+            />
+            <input
+              type="hidden"
+              id="userId"
+              name="lookup_key"
+              value="Netflix subscription"
             />
           </Row>
           <button
