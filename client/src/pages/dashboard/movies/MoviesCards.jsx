@@ -18,7 +18,7 @@ export default function MoviesCards() {
   const dispatch = useDispatch();
   const allMovies = useSelector((state) => state.allMovies.value.data);
   const paging = useSelector((state) => state.allMovies.value.paging);
-  // console.log(paging);
+
   useEffect(() => {
     dispatch(getAllMovies(page));
   }, [dispatch, page]);

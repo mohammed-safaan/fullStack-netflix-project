@@ -12,7 +12,6 @@ import AddMovie from "./pages/dashboard/movies/AddMovie";
 import Profile from "./pages/profile/Profile";
 import Signup from "./pages/signup/Signup";
 import Watchlist from "./pages/watchlist/watchlist";
-import Plans from "./pages/subscription/Plans";
 import ErrorPage from "./pages/error/ErrorPage";
 import { Navigate, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -22,20 +21,15 @@ import { authSelector } from "./features/auth/authSlice";
 import { useSelector } from "react-redux";
 
 function App() {
-  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
-  const [subscription_status , setSubscription_status] = useState(JSON.parse(localStorage.getItem("subscription_status")));
-  useEffect(() => {
-    setToken(JSON.parse(localStorage.getItem("token")));
-  }, [token]);
+  const { token } = useSelector(authSelector);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route
           path="/home"
-          element={
-            token ? <Home setToken={setToken} /> : <Navigate to="/register" />
-          }
+          element={token ? <Home /> : <Navigate to="/register" />}
         />
         <Route
           path="/register"
@@ -43,9 +37,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={
-            !token ? <Login setToken={setToken} /> : <Navigate to="/home" />
-          }
+          element={!token ? <Login /> : <Navigate to="/home" />}
         />
         <Route
           path="/signup"
@@ -96,10 +88,6 @@ function App() {
             }
           />
         </Route>
-        <Route
-          path="/subscription"
-          element={token ? <Plans /> : <Navigate to="/register" />}
-        />
         {/* Error Page */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>

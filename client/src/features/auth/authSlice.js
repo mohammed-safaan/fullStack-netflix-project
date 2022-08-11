@@ -14,6 +14,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
+  token: token || "",
   message: "",
 };
 
@@ -75,7 +76,6 @@ export const addFavMovie = createAsyncThunk(
       const data = await getUserInfo();
       let prevFav = data.favMovies;
       prevFav.push(movieId);
-      console.log(prevFav);
       await axios.put(
         `http://localhost:8800/api/users/${id}`,
         { favMovies: prevFav },
@@ -100,7 +100,7 @@ export const deleteFavMovie = createAsyncThunk(
       const data = await getUserInfo();
       let prevFav = data.favMovies;
       const filtered = prevFav.filter((ele) => ele !== movieId);
-      console.log(filtered);
+
       await axios.put(
         `http://localhost:8800/api/users/${id}`,
         { favMovies: filtered },
@@ -116,21 +116,21 @@ export const deleteFavMovie = createAsyncThunk(
   }
 );
 
-// Logout
-export const logout = createAsyncThunk("auth/logout", () => {
-  authService.logout();
-});
-
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
     // reset the initial state after login
     reset: (state) => {
-      state.isLoading = false;
-        state.isSuccess = false;
-        state.isError = false;
+      (state.isLoading = false),
+        (state.isSuccess = false),
+        (state.isError = false);
       return state;
+    },
+    // logout
+    logout: (state) => {
+      state.token = "";
+      authService.logout();
     },
   },
   extraReducers: {
@@ -139,7 +139,7 @@ export const authSlice = createSlice({
       state.isSuccess = true;
       state.message = "";
       state.user = payload;
-
+      state.token = payload.token;
       return state;
     },
     [login.rejected]: (state, { payload }) => {
@@ -151,14 +151,11 @@ export const authSlice = createSlice({
     [login.pending]: (state) => {
       state.isLoading = true;
     },
-    [logout.fulfilled]: (state) => {
-      state.user = null;
-    },
   },
 });
 
 // ***
 export const authSelector = (state) => state.auth;
 // ***
-export const { reset } = authSlice.actions;
+export const { reset, logout } = authSlice.actions;
 export default authSlice.reducer;

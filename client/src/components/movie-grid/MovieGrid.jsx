@@ -3,8 +3,9 @@ import SpinnerRoundOutlined from "react-spinners/ClipLoader";
 import "./movie-grid.scss";
 import Input from "../input/Input";
 import MovieCard from "../movie-card/MovieCard";
-import Button from "../button/Button";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { authSelector } from "../../features/auth/authSlice";
 
 const MovieGrid = (props) => {
   const { type } = props;
@@ -16,6 +17,8 @@ const MovieGrid = (props) => {
   const [bgActive, setBgActive] = useState(false);
   let totalpages = pagedetails.totalPages;
   let [loading, setLoading] = useState("");
+
+  const { token } = useSelector(authSelector);
 
   useEffect(() => {
     const getMovieOrSeries = async () => {
@@ -29,8 +32,7 @@ const MovieGrid = (props) => {
       try {
         const res = await axios.get(url, {
           headers: {
-            token:
-              "Bearers eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWU4NGQ5MTQ3MDkwNTdhYzZmZjU0NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTk3OTg4ODMsImV4cCI6MTY2NDExODg4M30.MtFf9CekArm08BKokr2InDdYfVwOllsemxC28sIlisE",
+            token: "Bearers " + token,
           },
         });
 
@@ -47,10 +49,6 @@ const MovieGrid = (props) => {
     };
     getMovieOrSeries();
   }, [type, genre, page, search]);
-
-  let changebackground = (ele) => {
-    ele.classList.add("activ");
-  };
 
   let loopfun = () => {
     let output = [];

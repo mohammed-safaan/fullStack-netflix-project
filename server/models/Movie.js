@@ -13,6 +13,7 @@ const MovieSchema = new mongoose.Schema(
     limit: { type: Number },
     tmdbId: { type: Number },
     genre: { type: String },
+    comments: { type: Array, default: [] },
     isSeries: { type: Boolean, default: false },
   },
   {

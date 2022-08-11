@@ -7,18 +7,20 @@ import Button, { OutlineButton } from "../button/Button";
 import Modal, { ModalContent } from "../modal/Modal";
 import { Link } from "react-router-dom";
 import "./heroslide.scss";
+import { useSelector } from "react-redux";
+import { authSelector } from "../../features/auth/authSlice";
 
 const HeroSlide = () => {
   SwiperCore.use([Autoplay]);
   const [movieItems, setMovieItems] = useState([]);
+  const { token } = useSelector(authSelector);
   useEffect(() => {
     const getMovies = async () => {
       const url = `http://localhost:8800/api/movies/random`;
       try {
         const res = await axios.get(url, {
           headers: {
-            token:
-              "Bearers eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWU4NGQ5MTQ3MDkwNTdhYzZmZjU0NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTk3OTg4ODMsImV4cCI6MTY2NDExODg4M30.MtFf9CekArm08BKokr2InDdYfVwOllsemxC28sIlisE",
+            token: "Bearers " + token,
           },
         });
         setMovieItems(res.data);
