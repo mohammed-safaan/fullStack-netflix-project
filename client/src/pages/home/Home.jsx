@@ -48,9 +48,13 @@ const Home = ({ type }) => {
     <div className="home">
       <Navbar />
       {loading ? (
+        <>
         <HeroSlide />
+        {lists.length !== 0 &&
+          lists.map((list, index) => <List list={list} key={index} />)}
+        </>
       ) : (
-        <p className="ploading text-white text-center pt-5 mt-5">
+        <p className="ploading text-white text-center">
           <SpinnerRoundOutlined
             size={100}
             thickness={100}
@@ -59,8 +63,7 @@ const Home = ({ type }) => {
           />
         </p>
       )}
-      {lists.length !== 0 &&
-        lists.map((list, index) => <List list={list} key={index} />)}
+     
       <Footer />
     </div>
   );
