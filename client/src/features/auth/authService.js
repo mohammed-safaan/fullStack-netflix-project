@@ -23,7 +23,6 @@ const login = async (userData, thunkApi) => {
   if (response.data?.message === "Done") {
     localStorage.setItem("token", JSON.stringify(response.data.token));
     localStorage.setItem("id", JSON.stringify(response.data._id));
-    localStorage.setItem("subscription_status", JSON.stringify(response.data.subscription_status));
     return response.data;
   } else {
     return thunkApi.rejectWithValue(response.data);

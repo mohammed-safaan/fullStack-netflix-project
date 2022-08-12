@@ -1,5 +1,7 @@
 .plans-container {
   height: 100vh;
+  background-image: url('../../assets/footer-bg.jpg');
+  background-size: cover;
   .label {
     cursor: pointer;
     transition: all .2s ease;

@@ -19,14 +19,26 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { authSelector } from "./features/auth/authSlice";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import {getUserData} from "./features/profile/profileSlice"
 function App() {
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
-  const [subscription_status , setSubscription_status] = useState(JSON.parse(localStorage.getItem("subscription_status")));
+  const [subscription_status, setSubscription_status] = useState("");
+  const id = JSON.parse(localStorage.getItem("id"));
+  const dispatch = useDispatch();
+  const userdata = useSelector((state) => state.userData.value);
+  const status = useSelector((state) => state.userData.status);
+
   useEffect(() => {
+    if (status === "idle") {
+      dispatch(getUserData(id));
+    }
+    if (status === "success") {
+      setSubscription_status(userdata.subscription_status)
+      console.log(subscription_status,"subscription_status")
+    }
     setToken(JSON.parse(localStorage.getItem("token")));
-  }, [token]);
+  }, [token,dispatch,status,id,subscription_status]);
   return (
     <div className="App">
       <Routes>
@@ -57,7 +69,9 @@ function App() {
         />
         <Route
           path="/watch"
-          element={token ? <Watch /> : <Navigate to="/register" />}
+          element={(token && subscription_status) === ("trialing"||"active") ?
+            <Watch /> : token && subscription_status === "" ?
+            <Navigate to="/subscription" />: <Navigate to="/register" />}
         />
         <Route
           path="/watchlist"
