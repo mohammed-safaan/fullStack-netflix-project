@@ -1,15 +1,16 @@
-import { ArrowDropDown } from "@material-ui/icons";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { logout } from "../../features/auth/authSlice";
+
 import axios from "axios";
 import "./navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
-// **
+import { logout } from "../../features/auth/authSlice";
+
+// ****
 import Dropdown from "react-bootstrap/Dropdown";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-const Navbar = ({ setToken }) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [user, setUser] = useState({});
   const [ismobile, setIsmobile] = useState(false);
@@ -40,11 +41,7 @@ const Navbar = ({ setToken }) => {
   }, [id, token]);
 
   const onLogout = () => {
-    setToken(null);
-    localStorage.removeItem("token");
-    setTimeout(() => {
-      navigate("/register");
-    }, 500);
+    dispatch(logout());
   };
 
   window.onscroll = () => {
@@ -87,17 +84,14 @@ const Navbar = ({ setToken }) => {
               <span>{user?.username}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu className="bg-dark">
-              <Dropdown.Item className="bg-dark">
-                <Link to="/profile">
-                  <span>Account</span>
-                </Link>
-              </Dropdown.Item>
+              <Link className="bg-dark dropdown-item" to="/profile">
+                <span>Account</span>
+              </Link>
+
               {user?.isAdmin && (
-                <Dropdown.Item className="bg-dark">
-                  <Link to="/dashboard/users">
-                    <span>Dashboard</span>
-                  </Link>
-                </Dropdown.Item>
+                <Link className="bg-dark dropdown-item" to="/dashboard/users">
+                  <span>Dashboard</span>
+                </Link>
               )}
 
               <Dropdown.Item className="bg-dark">

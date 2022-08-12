@@ -14,15 +14,14 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/containers/Footer";
 
 const Profile = () => {
+  const userId = JSON.parse(localStorage.getItem("id"));
 
-  const userId = JSON.parse(localStorage.getItem("id"));;
-  // console.log(userId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.userData.value);
   const status = useSelector((state) => state.userData.status);
   // const updateData = useSelector((state) => state.userData.updateData);
-  // console.log(updateData, "updateData");
+
   const [changedData, setChangedData] = useState({});
   const [uploading, setUploading] = useState();
   const [uploadedImg, setUploadedImg] = useState(null);
@@ -44,7 +43,6 @@ const Profile = () => {
 
   const handleChange = (value) => {
     setChangedData({ ...changedData, ...value });
-    console.log("handleChange", changedData);
   };
 
   const handleUpload = (e) => {
@@ -67,7 +65,7 @@ const Profile = () => {
             console.log("Upload is paused");
             break;
           case "running":
-            setUploading("Wait we'r getting your image ready");
+            setUploading("Wait we'r : getting your image ready");
             console.log("Upload is runninggg");
             break;
           default:

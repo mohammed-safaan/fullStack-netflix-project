@@ -17,15 +17,12 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.allUsers.singleUser);
   const status = useSelector((state) => state.allUsers.status);
-  // const updateData = useSelector((state) => state.allUsers.updateData);
   const [formData, setFormData] = useState({});
   const [uploading, setUploading] = useState();
   const [uploadedImg, setUploadedImg] = useState(null);
 
   const error = useSelector((state) => state.userData.error);
   if (error) console.log(error);
-
-  // console.log(data);
 
   useEffect(() => {
     dispatch(getUserData(id));
@@ -42,7 +39,7 @@ const UserForm = () => {
 
   const handleChange = (value) => {
     setFormData({ ...formData, ...value });
-    // console.log("onChange", formData);
+    console.log("onChange", formData);
   };
 
   const handleUpload = (e) => {

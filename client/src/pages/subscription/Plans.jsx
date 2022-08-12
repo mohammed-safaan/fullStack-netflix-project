@@ -8,6 +8,7 @@ import pay from "../../assets/pay.png";
 
 const Plans = () => {
   const id = JSON.parse(localStorage.getItem("id"));
+  const navigate = useNavigate();
   return (
     <>
       <Container fluid className="bg-light text-dark plans-container pt-5">
@@ -90,10 +91,15 @@ const Plans = () => {
                   />
                   <button
                     id="checkout-and-portal-button"
-                    className="updateBtn btn m-2 mt-3"
+                    className="updateBtn btn m-2 "
                     type="submit"
                   >
                     Subscripe
+                  </button>
+                  <button type="button" className="btn btn-light m-2"
+                    onClick={()=> navigate("/home")}
+                  > 
+                    Back Home
                   </button>
                 </Card.Body>
               </Card>

@@ -7,7 +7,7 @@ import { login, reset, authSelector } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-const Login = ({ setToken }) => {
+const Login = () => {
   const [errorValidation, setErrorValidation] = useState([]);
   const [errorRegister, setErrorRegister] = useState("");
 
@@ -36,7 +36,6 @@ const Login = ({ setToken }) => {
     }
     if (isSuccess) {
       console.log("Success");
-      setToken(JSON.parse(localStorage.getItem("token")));
       dispatch(reset());
       navigate("/");
     }

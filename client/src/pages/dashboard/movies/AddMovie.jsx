@@ -13,7 +13,6 @@ import {
 
 export default function AddMovie({ type }) {
   const [items, setItems] = useState([]);
-  // const [uploaded, setuploaded] = useState("");
   const [uploaded, setUploaded] = useState(0);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -21,8 +20,6 @@ export default function AddMovie({ type }) {
   const movieData = useSelector((state) => state.allMovies.singleMovie);
   const status = useSelector((state) => state.allMovies.singleStatus);
   const [formData, setFormData] = useState({});
-
-  // console.log(movieData);
 
   useEffect(() => {
     if (type === "update") {
@@ -38,12 +35,6 @@ export default function AddMovie({ type }) {
       setFormData({});
     }
   }, [dispatch, status, type]);
-
-  // useEffect(() => {
-  //   if (movieData) {
-  //     setFormData({ ...movieData });
-  //   }
-  // }, []);
 
   const handleChange = (value) => {
     setFormData({ ...formData, ...value });
@@ -66,8 +57,6 @@ export default function AddMovie({ type }) {
     } else {
       dispatch(updateMovie({ id, formData }));
     }
-
-    // navigate("/dashboard/movies");
   };
   const handleUpload = (items) => {
     items.forEach((item) => {
@@ -183,8 +172,8 @@ export default function AddMovie({ type }) {
             <Col md={12} lg={6} xl={4}>
               <Form.Group controlId="isSeries">
                 <Form.Label>Is Series?</Form.Label>
-                {/* // required={type === "add" ? true : false} */}
                 <Form.Select
+                  required={type === "add" ? true : false}
                   value={formData.isSeries || ""}
                   aria-label="Is Series?"
                   onChange={(e) => {
@@ -335,7 +324,7 @@ export default function AddMovie({ type }) {
                 className="ms-2 btn-secondary"
                 variant="secondry"
                 type="button"
-                onClick={() => navigate("/dashboard/movies")}
+                onClick={() => navigate(-1)}
               >
                 Cancel
               </Button>
@@ -344,7 +333,6 @@ export default function AddMovie({ type }) {
                 variant="secondry"
                 type="button"
                 onClick={() => {
-                  // setFormData((prev) => ({ ...prev, ...movieData }));
                   console.log("formData", formData);
                   console.log(items.length);
                 }}
