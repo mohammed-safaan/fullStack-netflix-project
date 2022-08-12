@@ -13,6 +13,7 @@ const Comments = ({ movieId }) => {
   //   delete comment
   const deleteComment = (cmntId) => {
     mvComments.splice(cmntId, 1);
+    console.log(mvComments);
     (async (comment) => {
       try {
         await axios.put(
@@ -28,7 +29,6 @@ const Comments = ({ movieId }) => {
         console.log(error);
       }
     })(mvComments);
-    // updateMovie(comment);
     getMovie();
   };
 
@@ -44,7 +44,6 @@ const Comments = ({ movieId }) => {
           },
         }
       );
-      console.log(response.data.comments);
       setMvComments(response.data.comments);
     } catch (error) {
       console.log(error);
@@ -64,7 +63,6 @@ const Comments = ({ movieId }) => {
           },
         }
       );
-      console.log([...mvComments, comment]);
     } catch (err) {
       console.log(err);
     }
@@ -72,12 +70,15 @@ const Comments = ({ movieId }) => {
 
   const addComment = () => {
     const commentText = commentInput.current.value;
-    const comment = {
-      commentText,
-      userId,
-    };
-    updateMovie(comment);
-    getMovie();
+    if (commentText) {
+      const comment = {
+        commentText,
+        userId,
+      };
+      updateMovie(comment);
+      getMovie();
+      commentInput.current.value = "";
+    }
   };
 
   useEffect(() => {
