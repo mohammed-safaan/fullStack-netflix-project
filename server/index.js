@@ -11,7 +11,6 @@ const stripeRoute = require("./routes/stripe");
 const app = express();
 var cors = require("cors");
 app.use(cors());
-
 dotenv.config();
 
 mongoose

@@ -18,6 +18,21 @@ export const getUserData = createAsyncThunk(
   }
 );
 
+export const getSubStatus = createAsyncThunk(
+  "profile/getSubStatus",
+  async (userId) => {
+    const response = await axios.get(
+      "http://localhost:8800/api/users/find/" + userId,
+      {
+        headers: {
+          token: "Bearers " + token,
+        },
+      }
+    );
+    return response.data.subscription_status;
+  }
+);
+
 export const updateUserProfile = createAsyncThunk(
   "profile/updateUserProfile",
   async ({ userId, changedData }) => {
@@ -44,6 +59,9 @@ const profileSlice = createSlice({
     value: {},
     status: "idle",
     updateData: "",
+    subStatus:"",
+    loadingSubStatus:"idle",
+    subError:null,
     error: null,
   },
   reducers: {},
@@ -62,7 +80,18 @@ const profileSlice = createSlice({
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.updateData = action.payload;
-      });
+      })
+      .addCase(getSubStatus.pending, (state) => {
+        state.loadingSubStatus = "loading";
+      })
+      .addCase(getSubStatus.fulfilled, (state, action) => {
+        state.subStatus = action.payload;
+        state.loadingSubStatus = "success";
+      })
+      .addCase(getSubStatus.rejected, (state, action) => {
+        state.loadingSubStatus = "failed";
+        state.subError = action.error.message;
+      })
   },
 });
 export default profileSlice.reducer;

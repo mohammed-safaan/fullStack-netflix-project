@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import "./watchlist.scss";
+
 import WatchlistItem from "./WatchlistItem";
+
 
 const Watchlist = () => {
   const id = JSON.parse(localStorage.getItem("id"));
@@ -48,6 +50,7 @@ const Watchlist = () => {
           <h3 className="text-center text-white">No Movies Added</h3>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

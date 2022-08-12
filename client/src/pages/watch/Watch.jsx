@@ -80,9 +80,9 @@ const Watch = () => {
               </div>
               <p className="overview">{movie.desc}</p>
               <p className="overview">{movie.year}</p>
-              <div className="movie-content__comments mb-0">
+              {/* <div className="movie-content__comments mb-0">
                 <Comments movieId={movie._id} />
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -93,7 +93,7 @@ const Watch = () => {
                   <h2>{movie.name}</h2>
                 </div>
                 <iframe
-                  src={`https://www.youtube.com/embed/${movie.video}?controls=1&autoplay=1`}
+                  src={`https://www.youtube.com/embed/${movie.video}?controls=1`}
                   ref={iframeRef}
                   width="100%"
                   height="315"
@@ -103,7 +103,11 @@ const Watch = () => {
                   allowFullScreen
                 ></iframe>
               </div>
+              <div className="comments">
+                   <Comments movieId={movie._id} />
+              </div>
             </div>
+
             <div className="section mb-3">
               <div className="section__header mb-2">
                 <h2 className="text-center m-5">Similar Movies</h2>

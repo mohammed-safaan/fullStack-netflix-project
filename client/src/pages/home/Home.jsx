@@ -6,8 +6,14 @@ import List from "../../components/list/List";
 import Footer from "../../components/containers/Footer";
 import axios from "axios";
 import SpinnerRoundOutlined from "react-spinners/ClipLoader";
+import { useSelector, useDispatch } from "react-redux";
+import {getSubStatus} from "../../features/profile/profileSlice";
 
 const Home = ({ type }) => {
+  const dispatch = useDispatch();
+  const id = JSON.parse(localStorage.getItem("id"));
+  const subStatus = useSelector((state) => state.userData.subStatus);
+
   const [lists, setLists] = useState([]);
   const [loading, setloading] = useState(false);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -27,7 +33,10 @@ const Home = ({ type }) => {
       console.log(error);
     }
   };
-  //
+  // get subscription status
+  useEffect(() => {
+      dispatch(getSubStatus(id))
+  },[dispatch,subStatus,id])
 
   useEffect(() => {
     if (token) {
@@ -39,9 +48,13 @@ const Home = ({ type }) => {
     <div className="home">
       <Navbar />
       {loading ? (
+        <>
         <HeroSlide />
+        {lists.length !== 0 &&
+          lists.map((list, index) => <List list={list} key={index} />)}
+        </>
       ) : (
-        <p className="ploading text-white text-center pt-5 mt-5">
+        <p className="ploading text-white text-center">
           <SpinnerRoundOutlined
             size={100}
             thickness={100}
@@ -50,8 +63,7 @@ const Home = ({ type }) => {
           />
         </p>
       )}
-      {lists.length !== 0 &&
-        lists.map((list, index) => <List list={list} key={index} />)}
+     
       <Footer />
     </div>
   );

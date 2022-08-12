@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
 import authService from "./authService";
 
 // Get user from localstorage
@@ -122,9 +121,9 @@ export const authSlice = createSlice({
   reducers: {
     // reset the initial state after login
     reset: (state) => {
-      (state.isLoading = false),
-        (state.isSuccess = false),
-        (state.isError = false);
+      state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = false;
       return state;
     },
     // logout

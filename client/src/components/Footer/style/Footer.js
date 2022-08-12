@@ -3,9 +3,10 @@ import bg from "../../../assets/footer-bg.jpg";
 
 export const Container = styled.div`
   display: flex;
-  padding: 70px 60px;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: center;
+  padding: 50px 60px;
+  text-align: center;
+  font-weight:bold;
   flex-direction: column;
   background-image: url(${bg});
   width: 100%;
@@ -17,7 +18,7 @@ export const Container = styled.div`
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
 `;
 
 export const Row = styled.div`

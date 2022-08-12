@@ -16,12 +16,12 @@ import ErrorPage from "./pages/error/ErrorPage";
 import { Navigate, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
 import { authSelector } from "./features/auth/authSlice";
 import { useSelector } from "react-redux";
-
+import Planspage from "./pages/subscription/Plans";
 function App() {
   const { token } = useSelector(authSelector);
+  const subscription_status = useSelector((state) => state.userData.subStatus);
 
   return (
     <div className="App">
@@ -49,7 +49,15 @@ function App() {
         />
         <Route
           path="/watch"
-          element={token ? <Watch /> : <Navigate to="/register" />}
+          element={
+            (token && subscription_status) === ("trialing" || "active") ? (
+              <Watch />
+            ) : token && subscription_status === "" ? (
+              <Navigate to="/subscription" />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
         />
         <Route
           path="/watchlist"
@@ -88,6 +96,10 @@ function App() {
             }
           />
         </Route>
+        <Route
+          path="/subscription"
+          element={token ? <Planspage /> : <Navigate to="/register" />}
+        />
         {/* Error Page */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>

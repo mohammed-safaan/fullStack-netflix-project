@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Plans.scss";
+import payment from "../../assets/payment.gif";
+import pay from "../../assets/pay.png";
+
 const Plans = () => {
   const id = JSON.parse(localStorage.getItem("id"));
+  const navigate = useNavigate();
   return (
     <>
       <Container fluid className="bg-light text-dark plans-container pt-5">
         <Form
           action="/api/subscription/create-checkout-session"
           method="POST"
-          className="container"
+          className="container w-100 h-100"
         >
           {/* Add a hidden field with the lookup_key of your Price */}
-          <Row>
+          <Row className="justify-content-center align-items-center w-100 h-100">
             <>
-            {/* <Col sm={6}>
+              {/* <Col sm={6}>
               <Card className="plan-card position-relative" border="danger">
                 <label htmlFor="Basic plan" className="label">
                   <Card.Title className="p-3 my-2">Basic plan 5$/mo</Card.Title>
@@ -70,26 +74,37 @@ const Plans = () => {
               </Card>
             </Col> */}
             </>
-            <input
-              type="hidden"
-              id="userId"
-              name="userId"
-              value={id}
-            />
-            <input
-              type="hidden"
-              id="userId"
-              name="lookup_key"
-              value="Netflix subscription"
-            />
+            <Col md={6} lg={4}>
+              <Card bg="dark" className="text-light">
+                <Card.Title className="m-3">
+                  Subscripe to watch movies
+                <img src={pay} className="img-fluid" alt="pay"/>
+                  {/* Subscripe to be able to watch the movies */}
+                </Card.Title>
+                <Card.Body>
+                  <input type="hidden" id="userId" name="userId" value={id} />
+                  <input
+                    type="hidden"
+                    id="userId"
+                    name="lookup_key"
+                    value="Netflix subscription"
+                  />
+                  <button
+                    id="checkout-and-portal-button"
+                    className="updateBtn btn m-2 "
+                    type="submit"
+                  >
+                    Subscripe
+                  </button>
+                  <button type="button" className="btn btn-light m-2"
+                    onClick={()=> navigate("/home")}
+                  > 
+                    Back Home
+                  </button>
+                </Card.Body>
+              </Card>
+            </Col>
           </Row>
-          <button
-            id="checkout-and-portal-button"
-            className="updateBtn btn m-2 mt-3"
-            type="submit"
-          >
-            Subscripe
-          </button>
         </Form>
       </Container>
     </>
@@ -102,12 +117,13 @@ const SuccessDisplay = ({ sessionId }) => {
     <Container fluid className="bg-light text-dark plans-container">
       <Container>
         <Row className="justify-content-center align-items-center p-3">
-          <Card className="w-75">
-            <Card.Title>
+          <Card className="w-75 bg-dark text-light">
+            <Card.Header>
               {/* <h3>Subscription to starter plan successful!</h3> */}
-              <h3 className="m-0 p-3">Subscription successful!</h3>
-            </Card.Title>
-            <Card.Body>
+              <h3 className="m-0 px-4 py-2">Subscription successful!</h3>
+            </Card.Header>
+            <Card.Body className="d-flex flex-column">
+              <img src={payment} className="img-fluid mx-auto" alt="payment"/>
               <form
                 action="/api/subscription/create-portal-session"
                 method="POST"
@@ -121,9 +137,9 @@ const SuccessDisplay = ({ sessionId }) => {
                 <button
                   id="checkout-and-portal-button"
                   type="submit"
-                  className="btn btn-dark my-3 me-2"
+                  className="btn btn-light my-3 me-2"
                 >
-                  Manage your billing information
+                  Billing settings
                 </button>
                 <button
                   id=""
@@ -131,7 +147,7 @@ const SuccessDisplay = ({ sessionId }) => {
                   className="btn updateBtn"
                   onClick={() => navigate("/")}
                 >
-                  Go to the Homepage
+                  Homepage
                 </button>
               </form>
             </Card.Body>
@@ -145,15 +161,19 @@ const SuccessDisplay = ({ sessionId }) => {
 const Message = ({ message }) => {
   const navigate = useNavigate();
   return (
-    <Container fluid className="bg-light text-dark plans-container">
-      <Container>
-        <Row className="justify-content-center align-items-center p-3">
-          <section className="alert alert-dark">
-            <p className="display-4">{message}</p>
-            <button className="btn btn-dark" onClick={() => navigate("/")}>
-              Choose a plan
+    <Container fluid className=" plans-container">
+      <Container className="h-100">
+        <Row className="justify-content-center align-items-center p-3 h-100">
+          <Col md={6} lg={4}>
+          <Card className="bg-dark text-light">
+            <Card.Title className="h3 p-3">{message}</Card.Title>
+            <Card.Body>
+            <button className="btn btn-light" onClick={() => navigate("/")}>
+              Back to Home
             </button>
-          </section>
+            </Card.Body>
+          </Card>
+          </Col>
         </Row>
       </Container>
     </Container>
@@ -176,7 +196,7 @@ export default function Planspage() {
 
     if (query.get("canceled")) {
       setSuccess(false);
-      setMessage("Order canceled -- you need to subscripe to use our services");
+      setMessage("Subscription canceled -- you need to subscripe to watch movies");
     }
   }, [sessionId]);
 
