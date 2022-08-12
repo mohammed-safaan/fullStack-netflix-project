@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./onecomment.scss";
 
+import {FaTrash} from "react-icons/fa";
+
 const OneComment = ({ comment, deleteComment, commentIndx }) => {
   const [user, setUser] = useState();
   const token = JSON.parse(localStorage.getItem("token"));
@@ -29,14 +31,12 @@ const OneComment = ({ comment, deleteComment, commentIndx }) => {
   return (
     <>
       <div className="comment-row">
-        <div className="comment-info">
-          <div className="comment-img">
-            <img src={user?.profilePic} alt="" />
-          </div>
-          <div className="comment-text">{comment.commentText}</div>
+        <div className="comment-img">
+          <img src={user?.profilePic} alt="" />
         </div>
         <div className="comment-btns">
-          <button onClick={() => deleteComment(commentIndx)}>delete</button>
+        <div className="comment-text">{comment.commentText}</div>
+          <button onClick={() => deleteComment(commentIndx)}><FaTrash/></button>
         </div>
       </div>
     </>

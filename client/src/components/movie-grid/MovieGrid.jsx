@@ -92,10 +92,10 @@ const MovieGrid = (props) => {
   return (
     <>
       <div className="section mb-3 d-flex justify-content-around align-items-center justify-content-center flex-wrap">
-        <div className="movie-search mb-3">
+        <div className="movie-search">
           <Input
             type="text"
-            className=""
+            className="inputseacch"
             placeholder="Enter movie title"
             value={search}
             onChange={(e) => setSearch(e.target.value)}

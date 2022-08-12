@@ -81,7 +81,7 @@ const Navbar = () => {
           <Dropdown className="dropdown-nav">
             <Dropdown.Toggle id="dropdown-basic">
               <img src={user?.profilePic} alt="user picture" />
-              <span>{user?.username}</span>
+              <span className="userhidden">{user?.username}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu className="bg-dark">
               <Link className="bg-dark dropdown-item" to="/profile">

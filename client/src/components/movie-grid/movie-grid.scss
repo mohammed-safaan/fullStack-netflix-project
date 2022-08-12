@@ -1,5 +1,7 @@
 @use "../../scss/" as *;
 
+
+
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -28,7 +30,10 @@
     width: 100%;
      max-width: 600px;
     input {
-        width: 100%
+        width: 100%;
+        @include tablet{
+            margin-bottom: 15px;;
+        }
     }
 }
 
