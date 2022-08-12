@@ -9,7 +9,7 @@ import {
 } from "../../features/profile/profileSlice";
 import { Card, Row, Container, Form } from "react-bootstrap";
 import "./profile.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/containers/Footer";
 
@@ -20,7 +20,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.userData.value);
   const status = useSelector((state) => state.userData.status);
-  const updateData = useSelector((state) => state.userData.updateData);
+  // const updateData = useSelector((state) => state.userData.updateData);
 
   const [changedData, setChangedData] = useState({});
   const [uploading, setUploading] = useState();

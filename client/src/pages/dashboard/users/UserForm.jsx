@@ -24,8 +24,6 @@ const UserForm = () => {
   const error = useSelector((state) => state.userData.error);
   if (error) console.log(error);
 
-  console.log(data);
-
   useEffect(() => {
     dispatch(getUserData(id));
   }, []);
