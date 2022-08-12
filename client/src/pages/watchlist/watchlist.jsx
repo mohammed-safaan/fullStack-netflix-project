@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import MovieCard from "../../components/movie-card/MovieCard";
 import Navbar from "../../components/navbar/Navbar";
 import "./watchlist.scss";
-import Footer from "../../components/containers/Footer";
+
+import WatchlistItem from "./WatchlistItem";
+
 
 const Watchlist = () => {
   const id = JSON.parse(localStorage.getItem("id"));
@@ -19,7 +20,6 @@ const Watchlist = () => {
           token: `Bearers ${token}`,
         },
       });
-
       setFavMoviesArr(res.data.favMovies);
     } catch (error) {
       console.log(error);
@@ -28,7 +28,8 @@ const Watchlist = () => {
 
   useEffect(() => {
     getUserData();
-  }, [favMoviesArr]);
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -38,7 +39,11 @@ const Watchlist = () => {
         {favMoviesArr.length !== 0 ? (
           <div className="movies-cont movie-grid mt-5">
             {favMoviesArr.map((ele, indx) => (
-              <MovieCard key={indx} mvId={ele} />
+              <WatchlistItem
+                key={ele}
+                mvId={ele}
+                setFavMoviesArr={setFavMoviesArr}
+              />
             ))}
           </div>
         ) : (

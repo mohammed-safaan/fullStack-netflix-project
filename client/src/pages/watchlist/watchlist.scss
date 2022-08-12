@@ -20,6 +20,7 @@
     margin: auto;
     margin-bottom: 3rem;
     color: white;
+    padding: 0 70px;
 
     @include tablet {
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

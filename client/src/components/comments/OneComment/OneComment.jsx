@@ -19,7 +19,6 @@ const OneComment = ({ comment, deleteComment, commentIndx }) => {
           },
         }
       );
-      //   console.log(response.data);
       setUser(response.data);
     } catch (err) {
       console.log(err);
