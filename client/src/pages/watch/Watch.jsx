@@ -33,7 +33,7 @@ const Watch = () => {
     const url = `http://localhost:8800/api/movies/filter${
       type ? `?type=${type}` : ""
     }${movie.genre ? `&genre=${movie.genre}` : ""}`;
-    console.log(url);
+
     try {
       const res = await axios.get(url, {
         headers: {
