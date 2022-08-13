@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSelector, deleteFavMovie } from "../../features/auth/authSlice";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
-import { FaCaretSquareRight, FaPlus, FaTrashAlt } from "react-icons/fa";
+import { FaCaretSquareRight, FaTrashAlt } from "react-icons/fa";
 
 const WatchlistItem = ({ mvId, setFavMoviesArr }) => {
   const [movie, setMovie] = useState();

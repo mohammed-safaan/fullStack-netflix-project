@@ -2,9 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import "./watchlist.scss";
-
+import Footer from "../../components/Footer/Footer";
 import WatchlistItem from "./WatchlistItem";
-
 
 const Watchlist = () => {
   const id = JSON.parse(localStorage.getItem("id"));

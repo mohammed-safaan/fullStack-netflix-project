@@ -22,7 +22,8 @@ import Planspage from "./pages/subscription/Plans";
 function App() {
   const { token } = useSelector(authSelector);
   const subscription_status = useSelector((state) => state.userData.subStatus);
-
+  console.log(subscription_status);
+  // console.log(["trialing", "active"].includes(subscription_status));
   return (
     <div className="App">
       <Routes>
@@ -50,7 +51,7 @@ function App() {
         <Route
           path="/watch"
           element={
-            (token && subscription_status) === ("trialing" || "active") ? (
+            token && ["trialing", "active"].includes(subscription_status) ? (
               <Watch />
             ) : token && subscription_status === "" ? (
               <Navigate to="/subscription" />

@@ -34,26 +34,28 @@ const MovieCard = (props) => {
             className="movie-card "
             style={{ backgroundImage: `url(${item?.img})` }}
           >
-            <Button className="btn">
-              <Link to="/watch" state={{ movie: item }}>
-                <FaCaretSquareRight />
-              </Link>
-            </Button>
-            <Button className="btn btnlike mt-5 btn text-white">
-              {isAdded ? (
-                <FaTrashAlt
-                  onClick={() => {
-                    handleRemovedMovies(item._id);
-                  }}
-                />
-              ) : (
-                <FaPlus
-                  onClick={() => {
-                    handleAddedMovies(item._id);
-                  }}
-                />
-              )}
-            </Button>
+            <div className="btn-container">
+              <Button className="btn">
+                <Link to="/watch" state={{ movie: item }}>
+                  <FaCaretSquareRight />
+                </Link>
+              </Button>
+              <Button className="btn text-white">
+                {isAdded ? (
+                  <FaTrashAlt
+                    onClick={() => {
+                      handleRemovedMovies(item._id);
+                    }}
+                  />
+                ) : (
+                  <FaPlus
+                    onClick={() => {
+                      handleAddedMovies(item._id);
+                    }}
+                  />
+                )}
+              </Button>
+            </div>
           </div>
           <h5>{item?.title}</h5>
         </>
