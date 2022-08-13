@@ -1,11 +1,33 @@
-
-.comment-btns{
-  background-color:rgb(31, 29, 29);
-  
-
-  button{
-    background-color:black;
-    color:white;
+@use "../../../scss/" as *;
+.comment-btns {
+  background-color: rgb(31, 29, 29);
+  .comment-info {
+    flex: 1 1 80%;
+    .username {
+      display: inline-flex;
+      flex: 1 1 100%;
+      font-weight: bold;
+      font-size: 12px;
+      color: #b3b3b3;
+    }
+    .comment-text {
+      flex: 1 1 80%;
+      margin: 0;
+    }
   }
-
+  .action-btns {
+    flex: 1 1;
+    display: flex;
+    justify-content: space-around;
+    .edit-btn {
+      color: #d19d00;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .delete-btn {
+      font-size: 20px;
+      cursor: pointer;
+      color: #c00909;
+    }
+  }
 }

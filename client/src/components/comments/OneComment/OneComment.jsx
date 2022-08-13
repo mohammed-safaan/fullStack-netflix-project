@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./onecomment.scss";
 
-import {FaTrash} from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 
-const OneComment = ({ comment, deleteComment, commentIndx }) => {
+const OneComment = ({ comment, deleteComment, commentIndx, editComment }) => {
   const [user, setUser] = useState();
   const token = JSON.parse(localStorage.getItem("token"));
+  const id = JSON.parse(localStorage.getItem("id"));
 
   const getUserData = async () => {
     try {
@@ -34,8 +35,25 @@ const OneComment = ({ comment, deleteComment, commentIndx }) => {
           <img src={user?.profilePic} alt="" />
         </div>
         <div className="comment-btns">
-        <div className="comment-text">{comment.commentText}</div>
-          <button onClick={() => deleteComment(commentIndx)}><FaTrash/></button>
+          <div className="comment-info">
+            <span className="username">{user?.username}</span>
+            <p className="comment-text">{comment.commentText}</p>
+          </div>
+          <div className="action-btns">
+            {comment.userId === id && (
+              <>
+                <FaEdit
+                  className="edit-btn"
+                  onClick={() => editComment(commentIndx)}
+                />
+
+                <FaTrash
+                  className="delete-btn"
+                  onClick={() => deleteComment(commentIndx)}
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>
