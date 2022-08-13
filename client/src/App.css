@@ -1,0 +1,16 @@
+.App {
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --main-color: #0b0b0b;
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+}
+
+.link {
+  text-decoration: none;
+}/*# sourceMappingURL=App.css.map */

@@ -1,21 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./signup.scss";
-import Footer from "../../components/containers/Footer";
-import joi from "joi";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom';
+import './signup.scss';
+import Footer from '../../components/containers/Footer';
+import joi from 'joi';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
   const [errorValidation, setErrorValidation] = useState([]);
-  const [errorRegister, setErrorRegister] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const [errorRegister, setErrorRegister] = useState('');
+  const [confirm, setConfirm] = useState('');
+  const [errorValidationName, setErrorValidationName] = useState('');
+  const [errorValidationEmail, setErrorValidationEmail] = useState('');
+  const [errorValidationPassword, setErrorValidationPassword] = useState('');
 
   // ****************
 
   const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
+    username: '',
+    email: '',
+    password: '',
   });
 
   const { username, email, password } = formData;
@@ -35,8 +38,23 @@ const Login = () => {
     e.preventDefault();
     let result = validation(formData);
     if (result.error) {
-      setErrorValidation(result.error.details);
-      console.log(result);
+      console.log(result.error.details);
+      if (result.error.details[0].path[0] === 'username') {
+        setErrorValidationName(result.error.details[0].message);
+      } else {
+        setErrorValidationName('');
+      }
+      if (result.error.details[0].path[0] === 'email') {
+        setErrorValidationEmail(result.error.details[0].message);
+      } else {
+        setErrorValidationEmail('');
+      }
+      if (result.error.details[0].path[0] === 'password') {
+        setErrorValidationPassword(result.error.details[0].message);
+      } else {
+        setErrorValidationPassword('');
+      }
+      console.log(result.error.details[0].path[0] === 'username');
     } else {
       setErrorValidation([]);
 
@@ -50,16 +68,22 @@ const Login = () => {
         `http://localhost:8800/api/auth/register`,
         userData
       );
-      if (data.message === "Done") {
-        setErrorRegister("");
-        setConfirm("please confirm your email");
+      if (data.message === 'Done') {
+        setErrorValidationName('');
+        setErrorValidationEmail('');
+        setErrorValidationPassword('');
+        setErrorRegister('');
+        setConfirm('please confirm your email');
         setTimeout(() => {
-          navigate("/login");
+          navigate('/login');
         }, 2000);
       } else {
         console.log(555);
-        setConfirm("");
+        setConfirm('');
         setErrorRegister(data.message);
+        setErrorValidationName('');
+        setErrorValidationEmail('');
+        setErrorValidationPassword('');
       }
     }
   };
@@ -68,15 +92,35 @@ const Login = () => {
 
   function validation(user) {
     let schema = joi.object({
-      username: joi.string().min(3).max(30).required(),
+      username: joi
+        .string()
+        .pattern(/^[A-Za-z][0-9]{3,30}/)
+        .required()
+        .messages({
+          'string.empty': 'plz enter your name',
+          'string.min': 'min length must be at least 3 characters',
+          'string.max': 'max length must be at less than 30 characters',
+          'string.pattern.base': 'your name must start one character',
+        }),
       email: joi
         .string()
         .email({
           minDomainSegments: 2,
-          tlds: { allow: ["com", "net", "org"] },
+          tlds: { allow: ['com', 'net', 'org'] },
         })
-        .required(),
-      password: joi.string().pattern(/^[A-Za-z0-9]{3,30}$/),
+        .required()
+        .messages({
+          'string.empty': 'plz enter your email',
+          'string.email': 'plz enter valid email',
+        }),
+      password: joi
+        .string()
+        .pattern(/^[A-Za-z0-9]{5,30}$/)
+        .messages({
+          'string.empty': 'plz enter your password',
+          'string.pattern.base':
+            'password pattern is A-Z or a-z or 0-9 min length is 5 and max length is 30',
+        }),
     });
     return schema.validate(user, { abortEarly: false });
   }
@@ -85,16 +129,16 @@ const Login = () => {
     <>
       <div className="login">
         <div className="top">
-          {errorRegister && (
+          {/* {errorRegister && (
             <p className="top-err alert alert-danger text-center fw-bold fs-5">
               {errorRegister}
             </p>
-          )}
-          {confirm && (
+          )} */}
+          {/* {confirm && (
             <p className="top-conf alert alert-success text-center fw-bold fs-5">
               {confirm}
             </p>
-          )}
+          )} */}
           <div className="wrapper">
             <Link to="/register">
               <img
@@ -105,7 +149,24 @@ const Login = () => {
             </Link>
           </div>
         </div>
-        <div className="container">
+        {/* {errorValidation
+          ? errorValidation.map((el, i) => (
+              <div key={i} className="text-light text-center h3">
+                {el.message}
+              </div>
+            ))
+          : ''} */}
+        <div className="container justify-content-start">
+          {errorRegister && (
+            <p className="top-err alert alert-danger text-center fw-bold fs-5 w-50">
+              {errorRegister}
+            </p>
+          )}
+          {confirm && (
+            <p className="top-conf alert alert-success text-center fw-bold fs-5 w-50">
+              {confirm}
+            </p>
+          )}
           <form onSubmit={onSubmit}>
             <h1>Register</h1>
             <input
@@ -115,6 +176,13 @@ const Login = () => {
               value={username}
               onChange={onChange}
             />
+            {errorValidationName ? (
+              <div className="text-warning text-center h5">
+                {errorValidationName}
+              </div>
+            ) : (
+              ''
+            )}
 
             <input
               type="email"
@@ -123,6 +191,14 @@ const Login = () => {
               placeholder="Enter email"
               onChange={onChange}
             />
+            {errorValidationEmail ? (
+              <div className="text-warning text-center h5">
+                {errorValidationEmail}
+              </div>
+            ) : (
+              ''
+            )}
+
             <input
               type="password"
               name="password"
@@ -130,22 +206,18 @@ const Login = () => {
               placeholder="Enter password"
               onChange={onChange}
             />
+            {errorValidationPassword ? (
+              <div className="text-warning text-center h5">
+                {errorValidationPassword}
+              </div>
+            ) : (
+              ''
+            )}
 
             <button className="loginbutton" type="submit">
               Register
             </button>
-            {errorValidation.map((el, i) => {
-              return (
-                <div className="text-danger" key={i}>
-                  {el.message}
-                </div>
-              );
-            })}
-            {errorRegister ? (
-              <div className="text-danger">{errorRegister}</div>
-            ) : (
-              ""
-            )}
+
             <span>
               New To Netflix ?
               <Link className="signUp" to="/login">
@@ -154,7 +226,7 @@ const Login = () => {
             </span>
             <small>
               this page is protected by google reCHAPCH To ensure you are not
-              abot. <b>learn more</b>{" "}
+              abot. <b>learn more</b>{' '}
             </small>
           </form>
         </div>

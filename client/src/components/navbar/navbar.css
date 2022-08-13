@@ -1,0 +1,123 @@
+.navbr {
+  font-size: 13px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 999;
+  background-color: black;
+  opacity: 0.9;
+}
+.navbr .contaner {
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+@media only screen and (max-width: 1024px) {
+  .navbr .contaner {
+    padding: 0 20px;
+  }
+}
+.navbr .contaner .left {
+  display: flex;
+  align-items: center;
+}
+.navbr .contaner .left img {
+  height: 50px;
+  margin-right: 40px;
+}
+@media only screen and (max-width: 1024px) {
+  .navbr .contaner .left img {
+    height: 30px;
+    width: 60px;
+  }
+}
+.navbr .contaner .left span {
+  margin-right: 20px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+  .navbr .contaner .center {
+    top: -310px;
+    position: absolute;
+    left: 0;
+    border-top: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    background-color: black !important;
+    padding: 50px;
+    width: 100%;
+    transition: all 0.6s ease-in-out;
+  }
+  .navbr .contaner .center.activ {
+    top: 70px;
+    height: 100vh;
+  }
+}
+.navbr .contaner .center a {
+  margin-right: 30px;
+  font-size: 15px;
+}
+@media only screen and (max-width: 1024px) {
+  .navbr .contaner .center a {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid red;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.navbr .contaner .center a:hover {
+  color: red;
+}
+.navbr .contaner .right {
+  display: flex;
+  align-items: center;
+}
+.navbr .contaner .right .dropdown-nav img {
+  border-radius: 60%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.navbr .contaner .right .dropdown-nav .btn {
+  background-color: black;
+  border-color: black !important;
+  box-shadow: none;
+}
+.navbr .contaner .right img {
+  height: 30px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+.navbr .contaner .right .icon {
+  margin: 0px 15px;
+  cursor: pointer;
+}
+.navbr .contaner .right .profile {
+  position: relative;
+}
+.navbr .contaner .right .profile .options {
+  display: none;
+  background-color: var(--main-color);
+  padding: 20px;
+  border-radius: 5px;
+}
+.navbr .contaner .right .profile .options span {
+  padding: 10px;
+  cursor: pointer;
+}
+.navbr .contaner .right .profile:hover .options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 10px;
+}
+.navbr .contaner .nav-icon {
+  cursor: pointer;
+}/*# sourceMappingURL=navbar.css.map */
