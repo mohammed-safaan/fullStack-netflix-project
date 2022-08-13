@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const token = JSON.parse(localStorage.getItem("token"));
+const status = JSON.parse(localStorage.getItem("subscription_status"));
 // console.log(token)
 export const getUserData = createAsyncThunk(
   "profile/getUserData",
@@ -29,6 +30,10 @@ export const getSubStatus = createAsyncThunk(
         },
       }
     );
+    localStorage.setItem(
+      "subscription_status",
+      JSON.stringify(response.data.subscription_status)
+    );
     return response.data.subscription_status;
   }
 );
@@ -42,8 +47,8 @@ export const updateUserProfile = createAsyncThunk(
         changedData,
         {
           headers: {
-          token: "Bearers " + token,
-        },
+            token: "Bearers " + token,
+          },
         }
       );
       return response.data;
@@ -59,9 +64,9 @@ const profileSlice = createSlice({
     value: {},
     status: "idle",
     updateData: "",
-    subStatus:"",
-    loadingSubStatus:"idle",
-    subError:null,
+    subStatus: status,
+    loadingSubStatus: "idle",
+    subError: null,
     error: null,
   },
   reducers: {},
@@ -91,7 +96,7 @@ const profileSlice = createSlice({
       .addCase(getSubStatus.rejected, (state, action) => {
         state.loadingSubStatus = "failed";
         state.subError = action.error.message;
-      })
+      });
   },
 });
 export default profileSlice.reducer;
