@@ -1,0 +1,10 @@
+.category {
+  background-color: black;
+}
+.category .catehead {
+  color: rgb(243, 228, 228);
+  padding-top: 90px;
+  padding-bottom: 50px;
+  font-size: 40px;
+  text-shadow: 1px 0px 1px #efe9e9, 0px 1px 1px #f10909, 2px 1px 1px #f40b0b, 1px 2px 1px #ec0b0b, 3px 2px 1px #f70a0a, 2px 3px 1px #e60505, 4px 3px 1px #f10808, 3px 4px 1px #ee0d0d, 5px 4px 1px #fd0909, 4px 5px 1px #f50707, 6px 5px 1px #f80404, 5px 6px 1px #f10b0b, 7px 6px 1px #f6efef;
+}/*# sourceMappingURL=catalog.css.map */

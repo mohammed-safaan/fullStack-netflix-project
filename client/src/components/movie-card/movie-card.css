@@ -1,0 +1,46 @@
+h5 {
+  text-align: center;
+  width: 200px;
+}
+
+.movie-card {
+  position: relative;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 150%;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+.movie-card .btn {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease, box-shadow 0.8s ease;
+}
+.movie-card .btnlike {
+  top: 110px;
+}
+.movie-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 30px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .movie-card:hover::before {
+    opacity: 0.8;
+  }
+  .movie-card:hover .btn {
+    transform: translate(-50%, -50%) scale(1);
+    background-color: rgb(145, 8, 8);
+    border: none;
+  }
+}/*# sourceMappingURL=movie-card.css.map */

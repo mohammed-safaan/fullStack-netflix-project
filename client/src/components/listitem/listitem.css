@@ -1,0 +1,80 @@
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.listitem {
+  width: 225px;
+  height: 200px;
+  background-color: var(--main-color);
+  margin-right: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+}
+.listitem img {
+  width: 100%;
+  height: 70%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.listitem iframe {
+  width: 100%;
+}
+.listitem:hover {
+  width: 325px;
+  height: 300px;
+  position: absolute;
+  top: -150px;
+  box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+}
+.listitem:hover img {
+  height: 140px;
+}
+.listitem:hover .itemInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.listitem:hover .itemInfo .icons {
+  display: flex;
+  margin-bottom: 10px;
+  gap: 10px;
+  align-items: center;
+  padding-left: 10px;
+}
+.listitem:hover .itemInfo .icons .icon {
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.listitem:hover .itemInfo .itemInfoTop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: gray;
+}
+.listitem:hover .itemInfo .itemInfoTop .limit {
+  border: 1px solid gray;
+  padding: 1px 3px;
+  margin: 0 10px;
+}
+.listitem:hover .itemInfo .desc {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.listitem:hover .itemInfo .genre {
+  font-size: 14px;
+  color: lightgray;
+}
+
+.list-video {
+  height: 100px !important;
+  width: 100px !important;
+}/*# sourceMappingURL=listitem.css.map */

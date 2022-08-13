@@ -1,0 +1,101 @@
+.profile-container {
+  min-height: 100vh;
+  padding-top: 100px;
+  color: #fff;
+  background-color: #110f10;
+  background-size: cover;
+  background-image: url("https://cdn1-m.zahratalkhaleej.ae/store/archive/image/2021/12/29/b992d274-f5d9-424b-a720-1707d4336834.jpeg?format=jpg&preset=w1900");
+}
+.profile-container .account-settings .user-profile {
+  margin: 0 0 1rem 0;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+.profile-container .account-settings .user-profile .user-avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.profile-container .account-settings .user-profile input.img-upload {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 2;
+  opacity: 0;
+}
+.profile-container .account-settings .user-profile .choose-icon {
+  background: rgba(255, 255, 255, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  height: 40%;
+  margin-top: 60%;
+}
+.profile-container .account-settings .user-profile .choose-icon svg {
+  color: #110f10;
+}
+.profile-container .account-settings .user-profile .user-avatar img {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+.profile-container .account-settings .user-profile h5.user-name {
+  margin: 0 0 0.5rem 0;
+}
+.profile-container .account-settings .user-profile h6.user-email {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.profile-container .account-settings .about {
+  margin: 1rem 0 0 0;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.profile-container .card {
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.profile-container .form-group .form-control {
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  font-size: 0.825rem;
+  background: #333333;
+  color: #fff;
+}
+.profile-container .form-group .form-control:focus {
+  box-shadow: 0px 0px 0px 6px rgba(0, 0, 0, 0.5);
+}
+.profile-container .form-group .form-control:disabled {
+  opacity: 0.5;
+}
+.profile-container label {
+  margin-bottom: 15px;
+}
+.profile-container .updateBtn {
+  background-color: #e50419;
+  color: #fff;
+  border: none;
+}
+.profile-container .updateBtn:hover {
+  background-color: rgba(229, 4, 25, 0.9);
+}
+.profile-container .updateBtn:focus {
+  box-shadow: 0px 0px 0px 6px rgba(229, 4, 25, 0.5) !important;
+}
+.profile-container .btn {
+  border-radius: 0;
+}
+.profile-container div[class^=Footer__Container] {
+  background-color: #000;
+  margin-top: 50px;
+}/*# sourceMappingURL=profile.css.map */
