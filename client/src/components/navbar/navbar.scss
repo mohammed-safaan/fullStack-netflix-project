@@ -28,7 +28,6 @@
 
         @include tablet {
           height: 30px;
-          width: 60px;
         }
       }
       span {
@@ -88,7 +87,7 @@
         }
       }
       @include tablet {
-        .userhidden{
+        .userhidden {
           display: none;
         }
       }
@@ -121,6 +120,13 @@
             position: absolute;
             left: 10px;
           }
+        }
+      }
+    }
+    .toggler {
+      @media only screen and (min-width: 1025px) {
+        & {
+          display: none;
         }
       }
     }
