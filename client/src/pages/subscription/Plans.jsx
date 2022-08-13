@@ -76,12 +76,12 @@ const Plans = () => {
             </>
             <Col md={6} lg={4}>
               <Card bg="dark" className="text-light">
-                <Card.Title className="m-3">
+                <Card.Title className="m-3 text-center">
                   Subscripe to watch movies
-                <img src={pay} className="img-fluid" alt="pay"/>
+                  <img src={pay} className="img-fluid" alt="pay" />
                   {/* Subscripe to be able to watch the movies */}
                 </Card.Title>
-                <Card.Body>
+                <Card.Body className="text-center">
                   <input type="hidden" id="userId" name="userId" value={id} />
                   <input
                     type="hidden"
@@ -96,9 +96,11 @@ const Plans = () => {
                   >
                     Subscripe
                   </button>
-                  <button type="button" className="btn btn-light m-2"
-                    onClick={()=> navigate("/home")}
-                  > 
+                  <button
+                    type="button"
+                    className="btn btn-light m-2"
+                    onClick={() => navigate("/home")}
+                  >
                     Back Home
                   </button>
                 </Card.Body>
@@ -117,13 +119,13 @@ const SuccessDisplay = ({ sessionId }) => {
     <Container fluid className="bg-light text-dark plans-container">
       <Container>
         <Row className="justify-content-center align-items-center p-3">
-          <Card className="w-75 bg-dark text-light">
+          <Card className="w-75 bg-dark text-light text-center">
             <Card.Header>
               {/* <h3>Subscription to starter plan successful!</h3> */}
               <h3 className="m-0 px-4 py-2">Subscription successful!</h3>
             </Card.Header>
             <Card.Body className="d-flex flex-column">
-              <img src={payment} className="img-fluid mx-auto" alt="payment"/>
+              <img src={payment} className="img-fluid mx-auto" alt="payment" />
               <form
                 action="/api/subscription/create-portal-session"
                 method="POST"
@@ -165,14 +167,14 @@ const Message = ({ message }) => {
       <Container className="h-100">
         <Row className="justify-content-center align-items-center p-3 h-100">
           <Col md={6} lg={4}>
-          <Card className="bg-dark text-light">
-            <Card.Title className="h3 p-3">{message}</Card.Title>
-            <Card.Body>
-            <button className="btn btn-light" onClick={() => navigate("/")}>
-              Back to Home
-            </button>
-            </Card.Body>
-          </Card>
+            <Card className="bg-dark text-light text-center">
+              <Card.Title className="h3 p-3">{message}</Card.Title>
+              <Card.Body>
+                <button className="btn btn-light" onClick={() => navigate("/")}>
+                  Back to Home
+                </button>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>
@@ -196,7 +198,9 @@ export default function Planspage() {
 
     if (query.get("canceled")) {
       setSuccess(false);
-      setMessage("Subscription canceled -- you need to subscripe to watch movies");
+      setMessage(
+        "Subscription canceled you need to subscripe to watch movies"
+      );
     }
   }, [sessionId]);
 
