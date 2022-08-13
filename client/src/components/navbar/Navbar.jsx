@@ -101,7 +101,7 @@ const Navbar = () => {
           </Dropdown>
         </div>
 
-        <div className="d-lg-none">
+        <div className="toggler">
           {ismobile ? (
             <FaTimes
               className="nav-icon fs-2"
