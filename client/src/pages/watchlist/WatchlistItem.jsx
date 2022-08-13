@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSelector, deleteFavMovie } from "../../features/auth/authSlice";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
-import { FaCaretSquareRight, FaTrashAlt } from "react-icons/fa";
+import { FaCaretSquareRight, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 const WatchlistItem = ({ mvId, setFavMoviesArr }) => {
   const [movie, setMovie] = useState();
@@ -44,18 +44,20 @@ const WatchlistItem = ({ mvId, setFavMoviesArr }) => {
             className="movie-card "
             style={{ backgroundImage: `url(${movie?.img})` }}
           >
-            <Button className="btn">
-              <Link to="/watch" state={{ movie: movie }}>
-                <FaCaretSquareRight />
-              </Link>
-            </Button>
-            <Button className="btn btnlike mt-5 btn text-white">
-              <FaTrashAlt
-                onClick={() => {
-                  deleteMovie();
-                }}
-              />
-            </Button>
+            <div className="btn-container">
+              <Button className="btn">
+                <Link to="/watch" state={{ movie: movie }}>
+                  <FaCaretSquareRight />
+                </Link>
+              </Button>
+              <Button className="btn text-white">
+                <FaTrashAlt
+                  onClick={() => {
+                    deleteMovie();
+                  }}
+                />
+              </Button>
+            </div>
           </div>
           <h5>{movie?.title}</h5>
         </>
