@@ -1,0 +1,46 @@
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: auto;
+  margin-bottom: 3rem;
+  color: white;
+}
+@media only screen and (max-width: 1024px) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+.movie-grid .noresult {
+  grid-column: span 5;
+  margin: auto;
+}
+
+.pagination .page-link {
+  cursor: pointer;
+}
+
+.movie-search {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+.movie-search input {
+  width: 100%;
+}
+
+.genre {
+  padding: 10px;
+  width: 200px;
+}
+.genre option {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.pagination a:hover {
+  background-color: red;
+}
+.pagination .activ {
+  background-color: red;
+}/*# sourceMappingURL=movie-grid.css.map */

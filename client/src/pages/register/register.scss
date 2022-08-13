@@ -47,7 +47,6 @@
     padding-bottom: 50px;
     @media (max-width: 500px) {
       h1 {
-        
       }
       input {
         width: 50%;
@@ -55,6 +54,11 @@
     }
     h1 {
       font-size: 50px;
+    }
+    @media (max-width: 1000px) {
+      h1 {
+        display: none;
+      }
     }
     h2 {
       margin: 25px;
@@ -110,5 +114,11 @@
     position: absolute;
     top: 90px;
     right: 110px;
+    z-index: -1;
+  }
+  @media (max-width: 1000px) {
+    .ourVideo {
+      display: none;
+    }
   }
 }

@@ -64,14 +64,17 @@ const ListItem = ({ index, item }) => {
       style={{ left: isHovered && index * 250 - 50 + index * 2.5 }}
     >
       {!isHovered && <img src={movie?.img} alt="" />}
+      <Link to="/watch" state={{ movie }}>
+      {!isHovered && <p className="text-center">{movie?.title}</p>}
+  </Link>
 
       {isHovered && (
         <>
           <iframe
-            src={`https://www.youtube.com/embed/${movie?.video}?controls=0&autoplay=1`}
+            src={`https://www.youtube.com/embed/${movie?.video}?controls=0`}
             title="YouTube video player"
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
           <div className="itemInfo">

@@ -9,7 +9,7 @@ const signupValidation = {
       email: joi.string().email().required(),
       password: joi
         .string()
-        .pattern(/^[A-Za-z0-9]{3,30}$/)
+        .pattern(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/)
         .required(),
     }),
 };
