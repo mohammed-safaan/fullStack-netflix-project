@@ -38,7 +38,7 @@ const Login = () => {
     e.preventDefault();
     let result = validation(formData);
     if (result.error) {
-      //setErrorValidation(result.error.details);
+      console.log(result.error.details);
       if (result.error.details[0].path[0] === 'username') {
         setErrorValidationName(result.error.details[0].message);
       } else {
@@ -92,11 +92,16 @@ const Login = () => {
 
   function validation(user) {
     let schema = joi.object({
-      username: joi.string().min(3).max(30).required().messages({
-        'string.empty': 'plz enter your name',
-        'string.min': 'min length must be at least 3 characters',
-        'string.max': 'max length must be at less than 30 characters',
-      }),
+      username: joi
+        .string()
+        .pattern(/^[A-Za-z][0-9]{3,30}/)
+        .required()
+        .messages({
+          'string.empty': 'plz enter your name',
+          'string.min': 'min length must be at least 3 characters',
+          'string.max': 'max length must be at less than 30 characters',
+          'string.pattern.base': 'your name must start one character',
+        }),
       email: joi
         .string()
         .email({
