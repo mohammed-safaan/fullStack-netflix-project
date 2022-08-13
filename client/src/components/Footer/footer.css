@@ -1,0 +1,49 @@
+.footer {
+  position: relative;
+  padding: 6rem 2rem;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 70px;
+}
+.footer a {
+  text-decoration: none;
+  color: #fff;
+}
+.footer a:hover {
+  color: red;
+}
+.footer__content {
+  max-width: 1000px;
+}
+.footer__content__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+.footer__content__logo .netflix-logo {
+  font-size: 50px;
+}
+.footer__content__menus {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 5rem;
+}
+@media only screen and (max-width: 600px) {
+  .footer__content__menus {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.footer__content__menu {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.footer__content__menu > * ~ * {
+  margin-top: 1rem;
+}/*# sourceMappingURL=footer.css.map */

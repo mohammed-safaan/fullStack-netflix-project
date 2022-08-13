@@ -2,29 +2,19 @@
   width: 100%;
   border-bottom: 10px solid #222222;
   height: 115vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(1, 0, 0, 0)), to(black)), url("https://assets.nflxext.com/ffe/siteui/vlv3/c8c8a0ad-86d6-45f1-b21d-821afa4e5027/5465b2b8-e9b3-411d-80f9-d5839f259e05/EG-en-20220801-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
-  background: linear-gradient(to bottom, rgba(1, 0, 0, 0) 0%, black 100%), url("https://assets.nflxext.com/ffe/siteui/vlv3/c8c8a0ad-86d6-45f1-b21d-821afa4e5027/5465b2b8-e9b3-411d-80f9-d5839f259e05/EG-en-20220801-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
+  background: linear-gradient(to bottom, rgba(1, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url("https://assets.nflxext.com/ffe/siteui/vlv3/c8c8a0ad-86d6-45f1-b21d-821afa4e5027/5465b2b8-e9b3-411d-80f9-d5839f259e05/EG-en-20220801-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
   background-position: center;
   background-size: cover;
 }
-
 .up .top .wrapper {
   padding: 20px 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .up .top .wrapper .logo {
   height: 40px;
 }
-
 .up .top .wrapper .loginButton {
   background-color: red;
   color: white;
@@ -35,87 +25,63 @@
   font-weight: 500;
   cursor: pointer;
 }
-
 .up .container {
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: white;
   text-align: center;
   padding-bottom: 50px;
 }
-
 @media (max-width: 500px) {
-  .up .container h1 {
-    display: none;
-  }
   .up .container input {
     width: 50%;
   }
 }
-
 .up .container h1 {
   font-size: 50px;
 }
-
 .up .container h2 {
   margin: 25px;
 }
-
 .up .container p {
   font-size: 20px;
 }
-
 .up .container .input {
   width: 50%;
   background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 20px;
   height: 50px;
   border-radius: 5px;
 }
-
 .up .container .input input {
-  -webkit-box-flex: 9;
-      -ms-flex: 9;
-          flex: 9;
+  flex: 9;
   height: 100%;
   border: none;
   padding: 0 10px;
 }
-
 .up .container .input .registerButton {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  flex: 3;
   height: 100%;
   background-color: red;
   color: white;
   border: none;
   font-size: 20px;
   cursor: pointer;
+  text-decoration: none;
+  padding-top: 8px;
 }
-
+@media (max-width: 1000px) {
+  .up .container .input {
+    font-size: smaller;
+  }
+}
 .up .container .validation {
   color: red;
   width: 50%;
@@ -126,11 +92,9 @@
 .pane {
   position: relative;
 }
-
 .pane .ourVideo {
   width: 60%;
   position: absolute;
   top: 90px;
   right: 110px;
-}
-/*# sourceMappingURL=register.css.map */
+}/*# sourceMappingURL=register.css.map */

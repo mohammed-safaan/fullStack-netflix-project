@@ -1,0 +1,12 @@
+.profile-container .form-select {
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  font-size: 0.825rem;
+  background-color: #333333;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIiBmaWxsPSIjZmZmZmZmIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuMS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIyIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMjI0IDQxNmMtOC4xODggMC0xNi4zOC0zLjEyNS0yMi42Mi05LjM3NWwtMTkyLTE5MmMtMTIuNS0xMi41LTEyLjUtMzIuNzUgMC00NS4yNXMzMi43NS0xMi41IDQ1LjI1IDBMMjI0IDMzOC44bDE2OS40LTE2OS40YzEyLjUtMTIuNSAzMi43NS0xMi41IDQ1LjI1IDBzMTIuNSAzMi43NSAwIDQ1LjI1bC0xOTIgMTkyQzI0MC40IDQxMi45IDIzMi4yIDQxNiAyMjQgNDE2eiIvPjwvc3ZnPg==);
+  color: #fff;
+}
+.profile-container .form-select:focus {
+  box-shadow: 0px 0px 0px 6px rgba(0, 0, 0, 0.5);
+}/*# sourceMappingURL=users.css.map */

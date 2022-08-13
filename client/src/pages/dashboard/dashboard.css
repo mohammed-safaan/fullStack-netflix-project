@@ -1,0 +1,115 @@
+.dash-container .side-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 3rem;
+  z-index: 2;
+}
+@media screen and (max-width: 768px) {
+  .dash-container .side-container {
+    position: static;
+  }
+}
+.dash-container .card.side-dash {
+  height: 90vh;
+}
+@media screen and (max-width: 768px) {
+  .dash-container .card.side-dash {
+    height: auto;
+    background-color: var(--bs-dark);
+  }
+}
+.dash-container .card {
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.dash-container .card .card-img-overlay, .dash-container .card img {
+  height: 450px;
+}
+.dash-container .card .link {
+  transition: all 0.2s ease-in-out;
+}
+.dash-container .card .link:hover {
+  background-color: #000;
+  color: white;
+  border-left: 5px solid #e50419;
+}
+.dash-container .card .link svg {
+  width: 44px;
+  height: 44px;
+  margin-right: 10px;
+}
+.dash-container .card .link.active {
+  background-color: #000;
+  color: white;
+  border-left: 5px solid #e50419;
+}
+.dash-container .card .user-info .user-img {
+  width: 120px;
+  height: 120px;
+}
+.dash-container .card .card-icon button {
+  padding: 10px 25px;
+  background-color: rgba(0, 0, 0, 0.18);
+  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.18);
+  transition: all 0.2s ease-in-out;
+}
+.dash-container .card .card-icon button:hover {
+  border-bottom: 3px solid #e50419;
+}
+.dash-container .card .card-icon svg {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+}
+.dash-container .movie-info {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  color: #000;
+}
+.dash-container .movieForm .form-control,
+.dash-container .movieForm .form-select {
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  font-size: 0.825rem;
+  background-color: #333333;
+  color: #fff;
+}
+.dash-container .movieForm .form-control:focus,
+.dash-container .movieForm .form-select:focus {
+  box-shadow: 0px 0px 0px 6px rgba(0, 0, 0, 0.5);
+}
+.dash-container .movieForm .form-select {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIiBmaWxsPSIjZmZmZmZmIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuMS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIyIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMjI0IDQxNmMtOC4xODggMC0xNi4zOC0zLjEyNS0yMi42Mi05LjM3NWwtMTkyLTE5MmMtMTIuNS0xMi41LTEyLjUtMzIuNzUgMC00NS4yNXMzMi43NS0xMi41IDQ1LjI1IDBMMjI0IDMzOC44bDE2OS40LTE2OS40YzEyLjUtMTIuNSAzMi43NS0xMi41IDQ1LjI1IDBzMTIuNSAzMi43NSAwIDQ1LjI1bC0xOTIgMTkyQzI0MC40IDQxMi45IDIzMi4yIDQxNiAyMjQgNDE2eiIvPjwvc3ZnPg==);
+}
+.dash-container .movieForm label {
+  margin-bottom: 15px;
+}
+.dash-container .movieForm .updateBtn {
+  background-color: #e50419;
+  color: #fff;
+  border: none;
+}
+.dash-container .movieForm .updateBtn:hover {
+  background-color: rgba(229, 4, 25, 0.9);
+}
+.dash-container .movieForm .updateBtn:focus {
+  box-shadow: 0px 0px 0px 6px rgba(229, 4, 25, 0.5) !important;
+}
+.dash-container .movieForm .btn {
+  border-radius: 0;
+}
+.dash-container .movieForm p.alert.alert-dark {
+  border-radius: none !important;
+}/*# sourceMappingURL=dashboard.css.map */

@@ -1,0 +1,111 @@
+.watch {
+  background-color: black;
+  color: white;
+}
+
+.banner {
+  height: 100vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-image: linear-gradient(to top, #0f0f0f, rgba(0, 0, 0, 0));
+}
+
+.movie-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 1260px;
+  margin-left: auto;
+  margin-right: auto;
+  top: -450px;
+  position: relative;
+  padding: 0 8rem;
+}
+.movie-content__poster {
+  flex: 1;
+  height: "50px";
+}
+@media only screen and (max-width: 600px) {
+  .movie-content__poster {
+    display: none;
+  }
+}
+.movie-content__poster__img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  padding-top: 120%;
+  width: 300px;
+}
+.movie-content__info {
+  width: 70%;
+  padding-left: 2rem;
+  position: relative;
+}
+@media only screen and (max-width: 600px) {
+  .movie-content__info {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+.movie-content__info > * {
+  margin-bottom: 2rem;
+}
+.movie-content__info .title {
+  font-size: 3rem;
+  line-height: 1;
+}
+.movie-content__info .genres > * ~ * {
+  margin-left: 0.5rem;
+}
+.movie-content__info .genres__item {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #0f0f0f;
+}
+
+.video {
+  margin-bottom: 3rem;
+  margin-top: -280px;
+  border: 1px solid white;
+}
+.video__title {
+  margin-bottom: 1.5rem;
+}
+
+.movieswiper .swiper-slide {
+  width: 15%;
+}
+@media only screen and (max-width: 1024px) {
+  .movieswiper .swiper-slide {
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .movieswiper .swiper-slide {
+    width: 40%;
+  }
+}/*# sourceMappingURL=watch.css.map */

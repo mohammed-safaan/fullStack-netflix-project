@@ -1,0 +1,37 @@
+.plans-container {
+  height: 100vh;
+  background-image: url("../../assets/footer-bg.jpg");
+  background-size: cover;
+}
+.plans-container .label {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.plans-container .label:hover {
+  box-shadow: 0 0 15px rgba(229, 4, 25, 0.3);
+}
+.plans-container .form-check-input {
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+}
+.plans-container .form-check-input:checked {
+  background-color: #010101;
+  border-color: #010101;
+}
+.plans-container .updateBtn {
+  background-color: #e50419;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.plans-container .updateBtn:hover {
+  background-color: rgba(229, 4, 25, 0.8);
+}
+.plans-container .updateBtn:focus {
+  box-shadow: 0px 0px 0px 6px rgba(229, 4, 25, 0.5) !important;
+}
+.plans-container .btn {
+  border-radius: 0;
+}/*# sourceMappingURL=Plans.css.map */
