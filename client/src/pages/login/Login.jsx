@@ -99,7 +99,7 @@ const Login = () => {
         }),
       password: joi
         .string()
-        .pattern(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/)
+        .pattern(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{5,30}$/)
         .messages({
           "string.empty": "plz enter your password",
           "string.pattern.base":

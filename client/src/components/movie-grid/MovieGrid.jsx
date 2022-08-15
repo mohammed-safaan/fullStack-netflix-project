@@ -14,54 +14,56 @@ const MovieGrid = (props) => {
   const [pagedetails, setPageDetails] = useState({});
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [bgActive, setBgActive] = useState(false);
   let totalpages = pagedetails.totalPages;
   let [loading, setLoading] = useState("");
 
   const { token } = useSelector(authSelector);
 
-  useEffect(() => {
-    const getMovieOrSeries = async () => {
-      setLoading(false);
-      const url = `http://localhost:8800/api/movies/filter${
-        type ? `?type=${type}` : ""
-      }${genre ? `&genre=${genre}` : ""}${page ? `&page=${page}` : ""}${
-        search ? `&search=${search}` : ""
-      }`;
+  const getMovieOrSeries = async () => {
+    setLoading(false);
+    const url = `http://localhost:8800/api/movies/filter${
+      type ? `?type=${type}` : ""
+    }${genre ? `&genre=${genre}` : ""}${page ? `&page=${page}` : ""}${
+      search ? `&search=${search}` : ""
+    }`;
 
-      try {
-        const res = await axios.get(url, {
-          headers: {
-            token: "Bearers " + token,
-          },
-        });
-
-        setMoviesAndSeries(res.data.data);
-        setLoading(true);
-        if (res.data.data.length == 0) {
-          setPageDetails({});
-        } else {
-          setPageDetails(res.data.paging);
-        }
-      } catch (error) {
-        console.log(error);
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          token: "Bearers " + token,
+        },
+      });
+      console.log(res.data);
+      setMoviesAndSeries(res.data.data);
+      setLoading(true);
+      if (res.data.data.length == 0) {
+        setPageDetails({});
+      } else {
+        setPageDetails(res.data.paging);
       }
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     getMovieOrSeries();
-  }, [type, genre, page, search]);
+  }, [genre, page, search]);
+  useEffect(() => {
+    setSearch("");
+    setGenre("");
+    getMovieOrSeries();
+  }, [type]);
 
   let loopfun = () => {
     let output = [];
     for (let index = 1; index < totalpages + 1; index++) {
       output.push(
-        <li key={index} onClick={() => (setPage(index), setBgActive(true))}>
+        <li key={index} onClick={() => setPage(index)}>
           {" "}
           <a
-            href="#typemovie"
             className={
-              index === page
-                ? "activ page-link text-dark"
-                : "page-link text-dark"
+              index === page ? "activ page-link " : "page-link text-dark"
             }
           >
             {index}
@@ -74,10 +76,10 @@ const MovieGrid = (props) => {
   };
 
   let incrementfun = () => {
-    if (page < 5) {
+    if (page < pagedetails.totalPages) {
       setPage(page + 1);
     } else {
-      setPage(5);
+      setPage(pagedetails.totalPages);
     }
   };
 
@@ -98,7 +100,10 @@ const MovieGrid = (props) => {
             className="inputseacch"
             placeholder="Enter movie title"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
           />
         </div>
         <div className="category">
@@ -107,7 +112,11 @@ const MovieGrid = (props) => {
             name="genre"
             id="genre"
             className="genre"
-            onChange={(e) => setGenre(e.target.value)}
+            value={genre}
+            onChange={(e) => {
+              setGenre(e.target.value);
+              setPage(1);
+            }}
           >
             <option value="">All</option>
             <option value="Comedy">Comedy</option>
@@ -144,7 +153,11 @@ const MovieGrid = (props) => {
                 <a
                   className="page-link text-dark"
                   aria-label="Previous"
-                  href="#typemovie"
+                  style={
+                    page === 1
+                      ? { pointerEvents: "none", opacity: "0.5" }
+                      : undefined
+                  }
                 >
                   <span aria-hidden="true">&laquo;</span>
                 </a>
@@ -156,7 +169,11 @@ const MovieGrid = (props) => {
                 <a
                   className="page-link text-dark"
                   aria-label="Next"
-                  href="#typemovie"
+                  style={
+                    page === pagedetails.totalPages
+                      ? { pointerEvents: "none", opacity: "0.5" }
+                      : undefined
+                  }
                 >
                   <span aria-hidden="true">&raquo;</span>
                 </a>

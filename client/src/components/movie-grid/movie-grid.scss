@@ -1,59 +1,53 @@
 @use "../../scss/" as *;
 
-
-
 .movie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    margin:auto;
-    margin-bottom: 3rem;
-    color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: auto;
+  margin-bottom: 3rem;
+  color: white;
 
-    @include tablet {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
+  @include tablet {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 
-    .noresult{
-       grid-column: span 5;
-       margin: auto;
-
-    }
-   
+  .noresult {
+    grid-column: span 5;
+    margin: auto;
+  }
 }
-.pagination .page-link{
-    cursor: pointer;
-   }
+.pagination .page-link {
+  cursor: pointer;
+}
 
 .movie-search {
-    position: relative;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  input {
     width: 100%;
-     max-width: 600px;
-    input {
-        width: 100%;
-        @include tablet{
-            margin-bottom: 15px;;
-        }
+    @include tablet {
+      margin-bottom: 15px;
     }
+  }
 }
 
-
-.genre{
-    padding:10px;
-    width: 200px;
-    option{
-        font-weight:700;
-        font-size:18px;
-    }
+.genre {
+  padding: 10px;
+  width: 200px;
+  option {
+    font-weight: 700;
+    font-size: 18px;
+  }
 }
 
-.pagination{
-    a:hover {
-        background-color:red;
-    } 
-    .activ{
-
-        background-color:red;
-    }
-}  
-
+.pagination {
+  a:hover {
+    background-color: red;
+    color: white !important;
+  }
+  .activ {
+    background-color: red;
+  }
+}
