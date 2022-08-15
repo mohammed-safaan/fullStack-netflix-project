@@ -4,7 +4,7 @@ import {
   getAllUsers,
   deleteUser,
 } from "../../../features/dashboard/usersSlice";
-import { Col, Card, Table } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function UsersCards() {
@@ -15,7 +15,6 @@ export default function UsersCards() {
   };
   const UsersData = useSelector((state) => state.allUsers.value);
   const status = useSelector((state) => state.allUsers.status);
-  const deleteMsg = useSelector((state) => state.allUsers.deleteMsg);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,7 +22,7 @@ export default function UsersCards() {
   }, [dispatch]);
   return (
     <>
-      {status === "success" &&
+      {status === "success" && UsersData &&
         UsersData.map((ele, index) => (
           <Col key={index} sm={12} md={12} lg={6} className="">
             <Card className=" position-relative">

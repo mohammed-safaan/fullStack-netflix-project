@@ -116,6 +116,7 @@ const UserForm = () => {
                                 type="file"
                                 name="profilePIC"
                                 id="profilePIC"
+                                disabled
                                 onChange={(e) => {
                                   handleUpload(e);
                                 }}
@@ -167,6 +168,7 @@ const UserForm = () => {
                                 id="username"
                                 placeholder="Enter your user name"
                                 value={formData.username || ""}
+                                disabled
                                 onChange={(e) =>
                                   handleChange({ username: e.target.value })
                                 }
@@ -198,6 +200,7 @@ const UserForm = () => {
                                 className="form-control"
                                 id="password"
                                 placeholder="Enter password"
+                                disabled
                                 onChange={(e) => {
                                   if (e.target.value !== "") {
                                     handleChange({ password: e.target.value });
