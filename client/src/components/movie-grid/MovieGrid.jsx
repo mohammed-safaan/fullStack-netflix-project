@@ -33,7 +33,7 @@ const MovieGrid = (props) => {
           token: "Bearers " + token,
         },
       });
-      console.log(res.data);
+      console.log(new Set(res.data.data));
       setMoviesAndSeries(res.data.data);
       setLoading(true);
       if (res.data.data.length == 0) {
