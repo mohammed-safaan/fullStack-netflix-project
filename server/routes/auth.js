@@ -27,7 +27,7 @@ router.post(
         const user = await newUser.save();
         // confirmation token
         const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
-        const url = `http://localhost:8800/api/auth/confirmemail/${token}`;
+        // const url = `http://localhost:8800/api/auth/confirmemail/${token}`;
         // const message = `
         // <h2>Pleaser verify your email address</h2>
         // <p>Your account is almost ready, just verify your email address to complete your subscribtion.</p>
