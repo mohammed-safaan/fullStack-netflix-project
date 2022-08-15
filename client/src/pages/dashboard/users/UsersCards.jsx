@@ -4,7 +4,7 @@ import {
   getAllUsers,
   deleteUser,
 } from "../../../features/dashboard/usersSlice";
-import { Col, Card, Table } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function UsersCards() {
