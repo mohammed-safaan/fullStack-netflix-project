@@ -41,7 +41,6 @@ const ListItem = ({ index, item }) => {
       setMovie(res.data);
     } catch (err) {
       if (axios.isCancel(err)) {
-        console.log("successfully aborted");
       } else {
         console.log(err);
       }
@@ -65,8 +64,8 @@ const ListItem = ({ index, item }) => {
     >
       {!isHovered && <img src={movie?.img} alt="" />}
       <Link to="/watch" state={{ movie }}>
-      {!isHovered && <p className="text-center">{movie?.title}</p>}
-  </Link>
+        {!isHovered && <p className="text-center">{movie?.title}</p>}
+      </Link>
 
       {isHovered && (
         <>

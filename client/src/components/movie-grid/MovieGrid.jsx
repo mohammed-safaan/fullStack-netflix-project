@@ -16,11 +16,11 @@ const MovieGrid = (props) => {
   const [search, setSearch] = useState("");
   let totalpages = pagedetails.totalPages;
   let [loading, setLoading] = useState("");
-  const uniqueObjects = [...new Set(moviesandseries.map((obj) => obj.title))].map(
-    (title) => {
-      return moviesandseries.find((obj) => obj.title === title);
-    }
-  );
+  const uniqueObjects = [
+    ...new Set(moviesandseries.map((obj) => obj.title)),
+  ].map((title) => {
+    return moviesandseries.find((obj) => obj.title === title);
+  });
 
   const { token } = useSelector(authSelector);
 
@@ -138,9 +138,7 @@ const MovieGrid = (props) => {
           <div className="movie-grid mt-5">
             {}
             {moviesandseries.length > 0 ? (
-              uniqueObjects.map((item, i) => (
-                <MovieCard item={item} key={i} />
-              ))
+              uniqueObjects.map((item, i) => <MovieCard item={item} key={i} />)
             ) : (
               <p className="noresult fz-5">No Results</p>
             )}
