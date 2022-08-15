@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import SpinnerRoundOutlined from "react-spinners/ClipLoader";
 import "./movie-grid.scss";
 import Input from "../input/Input";
@@ -16,6 +16,11 @@ const MovieGrid = (props) => {
   const [search, setSearch] = useState("");
   let totalpages = pagedetails.totalPages;
   let [loading, setLoading] = useState("");
+  const uniqueObjects = [
+    ...new Set(moviesandseries.map((obj) => obj.title)),
+  ].map((title) => {
+    return moviesandseries.find((obj) => obj.title === title);
+  });
 
   const { token } = useSelector(authSelector);
 
@@ -33,10 +38,9 @@ const MovieGrid = (props) => {
           token: "Bearers " + token,
         },
       });
-      console.log(new Set(res.data.data));
       setMoviesAndSeries(res.data.data);
       setLoading(true);
-      if (res.data.data.length == 0) {
+      if (res.data.data.length === 0) {
         setPageDetails({});
       } else {
         setPageDetails(res.data.paging);
@@ -132,10 +136,9 @@ const MovieGrid = (props) => {
       {loading ? (
         <>
           <div className="movie-grid mt-5">
+            {}
             {moviesandseries.length > 0 ? (
-              moviesandseries.map((item, i) => (
-                <MovieCard item={item} key={i} />
-              ))
+              uniqueObjects.map((item, i) => <MovieCard item={item} key={i} />)
             ) : (
               <p className="noresult fz-5">No Results</p>
             )}
